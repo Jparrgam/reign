@@ -18,22 +18,21 @@ import com.airbnb.mvrx.fragmentViewModel
 
 class HackerNewsFragment : BaseMvRxEpoxyFragment(R.layout.hacker_news_fragment) {
     private val viewBinding: HackerNewsFragmentBinding by viewBinding()
-    private val newViewModel: NewsViewModel by fragmentViewModel()
+    private val viewModel: NewsViewModel by fragmentViewModel()
 
     override fun initUi() {
         initView()
-        newViewModel.onAsync(NewsState::request, onFail = {
-            newViewModel.fetchHackerNews()
-        }, onSuccess = {
-            invalidate()
+        viewModel.onAsync(NewsState::request, onFail = {
+            //TODO: view widget fail
         })
     }
 
     override fun invalidate() {
         viewBinding.rvcHackerNews.requestModelBuild()
+        viewBinding.swipeContainer.isRefreshing = false
     }
 
-    override fun epoxyController() = simpleController(newViewModel) { state ->
+    override fun epoxyController() = simpleController(viewModel) { state ->
         if (state.request is Success) {
             val data = state.request()
             headerTitleWidget {
@@ -42,16 +41,19 @@ class HackerNewsFragment : BaseMvRxEpoxyFragment(R.layout.hacker_news_fragment) 
             }
         }
 
-        state.news.forEach {
+        state.news.forEach { news ->
             newsItemWidget {
-                id(it.newsID)
-                newsTitle(it.storyTitle ?: it.title)
-                author(it.author ?: getString(R.string.news_item_author_not_found))
-                createdAt(it.createdAt)
+                id(news.newsID)
+                newsTitle(news.storyTitle ?: news.title)
+                author(news.author ?: getString(R.string.news_item_author_not_found))
+                createdAt(news.createdAt)
                 spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }
                 clickListener { _ ->
                     navigateTo(R.id.action_hackerNewsFragment_to_hackerNewsDetailsFragment,
-                        DetailNewsArgs(movie = it))
+                        DetailNewsArgs(movie = news))
+                }
+                deleteListener { _ ->
+                    viewModel.deleteNews(news)
                 }
             }
         }
@@ -59,12 +61,16 @@ class HackerNewsFragment : BaseMvRxEpoxyFragment(R.layout.hacker_news_fragment) 
         loadingWidget {
             visibility(state.request is Loading)
             id("loading${state.news.size}")
-            onBind { _, _, _ -> newViewModel.fetchHackerNews() }
+            onBind { _, _, _ -> viewModel.fetchHackerNews() }
         }
     }
 
     private fun initView() {
         viewBinding.rvcHackerNews.layoutManager = LinearLayoutManager(context)
         viewBinding.rvcHackerNews.setController(epoxyController)
+
+        viewBinding.swipeContainer.setOnRefreshListener {
+            viewModel.clearSearch()
+        }
     }
 }

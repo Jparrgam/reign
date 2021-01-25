@@ -1,37 +1,42 @@
 package co.reign.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity(
+    tableName = "news",
+    indices = [Index("newsID")]
+)
 data class NewsItem(
     @field:Json(name = "comment_text")
-    val commentText: String? = null,
+    var commentText: String? = "",
     @field:Json(name = "story_text")
-    val storyText: String? = null,
+    var storyText: String? = "",
     @field:Json(name = "story_id")
-    val storyId: String? = null,
-    @field:Json(name = "_tags")
-    val tags: List<String>?,
+    var storyId: String? = "",
     @field:Json(name = "created_at")
-    val createdAt: String = "",
+    var createdAt: String = "",
     @field:Json(name = "created_at_i")
-    val createdAtI: Int? = null,
+    var createdAtI: Int? = 0,
     @field:Json(name = "url")
-    val url: String? = "",
-    @field:Json(name = "_highlightResult")
-    val HighlightResult: HighlightResult,
+    var url: String? = "",
     @field:Json(name = "story_title")
-    val storyTitle: String? = null,
+    var storyTitle: String? = "",
     @field:Json(name = "parent_id")
-    val parentId: String? = null,
+    var parentId: String? = "",
     @field:Json(name = "story_url")
-    val storyUrl: String? = null,
+    var storyUrl: String? = "",
     @field:Json(name = "objectID")
-    val newsID: String? = "",
+    @PrimaryKey
+    var newsID: String = "",
     @field:Json(name = "title")
-    val title: String? = "",
+    var title: String? = "",
     @field:Json(name = "author")
-    var author: String? = ""
+    var author: String? = "",
+    var isNewsDelete: Boolean = false,
 ) : Parcelable

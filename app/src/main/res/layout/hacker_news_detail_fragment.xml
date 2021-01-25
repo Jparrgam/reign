@@ -28,33 +28,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailNewsToolbar" />
 
-    <co.lujun.androidtagview.TagContainerLayout
-        android:id="@+id/detailNewsTags"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:padding="10dp"
-        app:container_border_color="@android:color/transparent"
-        app:container_background_color="@android:color/transparent"
-        app:container_enable_drag="false"
-        app:horizontal_interval="10dp"
-        app:tag_vertical_padding="@dimen/dimen_padding_10dp"
-        app:tag_horizontal_padding="@dimen/dimen_padding_16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailNewsTitle"
-        app:tag_background_color="@color/teal_700"
-        app:tag_clickable="false"
-        app:tag_text_color="@android:color/white"
-        app:tag_theme="none"
-        app:vertical_interval="10dp" />
-
     <WebView
         android:id="@+id/detailsNewsWebView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailNewsTags" />
+        app:layout_constraintTop_toBottomOf="@+id/detailNewsTitle" />
 
     <ProgressBar
         android:id="@+id/detailNewsProgress"

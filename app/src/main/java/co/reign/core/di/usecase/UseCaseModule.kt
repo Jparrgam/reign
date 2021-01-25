@@ -1,6 +1,7 @@
 package co.reign.core.di.usecase
 
 import co.reign.repository.NewsRepository
+import co.reign.usecase.DeleteNewsUseCase
 import co.reign.usecase.GetNewsUseCase
 import dagger.Module
 import dagger.Provides
@@ -16,4 +17,9 @@ object UseCaseModule {
     @ViewModelScoped
     fun providerGetNewsUseCase(newsRepository: NewsRepository): GetNewsUseCase =
         GetNewsUseCase(newsRepository)
+
+    @Provides
+    @ViewModelScoped
+    fun providerDeleteNewsUseCase(newsRepository: NewsRepository): DeleteNewsUseCase =
+        DeleteNewsUseCase(newsRepository)
 }

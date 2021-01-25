@@ -1,0 +1,115 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "a8483698486b9d7b1c3b8db5a299db11",
+    "entities": [
+      {
+        "tableName": "news",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`commentText` TEXT, `storyText` TEXT, `storyId` TEXT, `createdAt` TEXT NOT NULL, `createdAtI` INTEGER, `url` TEXT, `storyTitle` TEXT, `parentId` TEXT, `storyUrl` TEXT, `newsID` TEXT NOT NULL, `title` TEXT, `author` TEXT, `isNewsDelete` INTEGER NOT NULL, PRIMARY KEY(`newsID`))",
+        "fields": [
+          {
+            "fieldPath": "commentText",
+            "columnName": "commentText",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "storyText",
+            "columnName": "storyText",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "storyId",
+            "columnName": "storyId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtI",
+            "columnName": "createdAtI",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "storyTitle",
+            "columnName": "storyTitle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "parentId",
+            "columnName": "parentId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "storyUrl",
+            "columnName": "storyUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "newsID",
+            "columnName": "newsID",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isNewsDelete",
+            "columnName": "isNewsDelete",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "newsID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_news_newsID",
+            "unique": false,
+            "columnNames": [
+              "newsID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_news_newsID` ON `${TABLE_NAME}` (`newsID`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a8483698486b9d7b1c3b8db5a299db11')"
+    ]
+  }
+}

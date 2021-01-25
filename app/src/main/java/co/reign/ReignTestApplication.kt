@@ -1,11 +1,11 @@
 package co.reign
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.airbnb.mvrx.Mavericks
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class ReignTestApplication : Application() {
+open class ReignTestApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         Mavericks.initialize(this)

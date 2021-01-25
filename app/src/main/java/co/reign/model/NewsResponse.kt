@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class NewsResponse(
         @field:Json(name = "hits")
-        val hits: List<NewsItem>?,
+        var hits: List<NewsItem>?,
         @field:Json(name = "query")
         val query: String = "",
         @field:Json(name = "nbHits")

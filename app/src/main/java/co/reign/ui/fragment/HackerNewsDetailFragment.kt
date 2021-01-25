@@ -35,9 +35,5 @@ class HackerNewsDetailFragment : BaseMvRxFragment(R.layout.hacker_news_detail_fr
         it.movie.storyUrl.whatIfNotNullOrEmpty { url ->
             viewBinding.detailsNewsWebView.loadUrl(url)
         }
-
-        it.movie.tags.whatIfNotNullOrEmpty { tags ->
-            viewBinding.detailNewsTags.setTags(tags)
-        }
     }
 }

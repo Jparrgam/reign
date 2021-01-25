@@ -4,4 +4,6 @@
     <string name="home_subtitle_count_news">%s news about mobile</string>
     <string name="news_item_title_not_found">Title not found</string>
     <string name="news_item_author_not_found">unknown</string>
+    <string name="unexpected_error_message">Unexpected error, please try again later</string>
+    <string name="news_delete_item">Delete</string>
 </resources>

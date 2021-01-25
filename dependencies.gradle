@@ -1,5 +1,5 @@
 ext.versions = [
-        minSdk              : 21,
+        minSdk              : 23,
         compileSdk          : 30,
         versionCode         : 1,
         versionName         : '0.0.1',
@@ -57,5 +57,9 @@ ext.versions = [
 
         // ui
         swipeLayout         : '1.2.0@aar',
-        tagView             : '1.0.1'
+        tagView             : '1.0.1',
+        swiperefreshlayout  : '1.1.0',
+
+        // mutidex
+        multidex            : '2.0.1'
 ]
