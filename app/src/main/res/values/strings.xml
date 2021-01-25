@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ReignTest</string>
+    <string name="home_title">Hacker news</string>
+    <string name="home_subtitle_count_news">%s news about mobile</string>
+    <string name="news_item_title_not_found">Title not found</string>
+    <string name="news_item_author_not_found">unknown</string>
+</resources>

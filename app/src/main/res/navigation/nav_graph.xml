@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/hackerNewsFragment">
+
+    <fragment
+        android:id="@+id/hackerNewsFragment"
+        android:name="co.reign.ui.fragment.HackerNewsFragment">
+        <action
+            android:id="@+id/action_hackerNewsFragment_to_hackerNewsDetailsFragment"
+            app:destination="@id/hackerNewsDetailsFragment"
+            app:enterAnim="@anim/anim_enter"
+            app:exitAnim="@anim/anim_exit"
+            app:popEnterAnim="@anim/anim_pop_enter"
+            app:popExitAnim="@anim/anim_pop_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hackerNewsDetailsFragment"
+        android:name="co.reign.ui.fragment.HackerNewsDetailFragment" />
+
+</navigation>
