@@ -13,8 +13,8 @@ import co.reign.viewmodel.news.NewsViewModel
 import co.reign.viewmodel.news.state.NewsState
 import co.reign.viewmodel.newsdetail.args.DetailNewsArgs
 import com.airbnb.mvrx.Loading
-import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.fragmentViewModel
+import com.tapadoo.alerter.Alerter
 
 class HackerNewsFragment : BaseMvRxEpoxyFragment(R.layout.hacker_news_fragment) {
     private val viewBinding: HackerNewsFragmentBinding by viewBinding()
@@ -23,7 +23,15 @@ class HackerNewsFragment : BaseMvRxEpoxyFragment(R.layout.hacker_news_fragment) 
     override fun initUi() {
         initView()
         viewModel.onAsync(NewsState::request, onFail = {
-            //TODO: view widget fail
+            Alerter.create(activity)
+                .setText(getString(R.string.unexpected_error_message))
+                .setEnterAnimation(R.anim.alerter_slide_in_from_left)
+                .setExitAnimation(R.anim.alerter_slide_out_to_right)
+                .enableIconPulse(true)
+                .setDismissable(false)
+                .show()
+
+            viewModel.fetchHackerNews()
         })
     }
 
@@ -33,12 +41,9 @@ class HackerNewsFragment : BaseMvRxEpoxyFragment(R.layout.hacker_news_fragment) 
     }
 
     override fun epoxyController() = simpleController(viewModel) { state ->
-        if (state.request is Success) {
-            val data = state.request()
-            headerTitleWidget {
-                id("headerTitle")
-                subTitle(getString(R.string.home_subtitle_count_news, data?.nbHits.toString()))
-            }
+        headerTitleWidget {
+            id("headerTitle")
+            subTitle(state.countNews)
         }
 
         state.news.forEach { news ->
@@ -47,13 +52,14 @@ class HackerNewsFragment : BaseMvRxEpoxyFragment(R.layout.hacker_news_fragment) 
                 newsTitle(news.storyTitle ?: news.title)
                 author(news.author ?: getString(R.string.news_item_author_not_found))
                 createdAt(news.createdAt)
-                spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }
                 clickListener { _ ->
-                    navigateTo(R.id.action_hackerNewsFragment_to_hackerNewsDetailsFragment,
-                        DetailNewsArgs(movie = news))
+                    navigateTo(
+                        R.id.action_hackerNewsFragment_to_hackerNewsDetailsFragment,
+                        DetailNewsArgs(movie = news)
+                    )
                 }
                 deleteListener { _ ->
-                    viewModel.deleteNews(news)
+                    viewModel.deleteNews(news.newsID)
                 }
             }
         }

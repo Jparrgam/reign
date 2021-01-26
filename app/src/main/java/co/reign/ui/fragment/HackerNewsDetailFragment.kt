@@ -23,17 +23,17 @@ class HackerNewsDetailFragment : BaseMvRxFragment(R.layout.hacker_news_detail_fr
         viewBinding.detailNewsToolbar.setupWithNavController(findNavController())
     }
 
-    override fun invalidate(): Unit = withState(detailNewsViewModel) {
+    override fun invalidate() = withState(detailNewsViewModel) {
         viewBinding.detailNewsTitle.text = it.movie.storyTitle ?: it.movie.title
+
+        it.movie.storyUrl.whatIfNotNullOrEmpty { url ->
+            viewBinding.detailsNewsWebView.loadUrl(url)
+        }
 
         viewBinding.detailsNewsWebView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 viewBinding.detailNewsProgress.isVisible = false
             }
-        }
-
-        it.movie.storyUrl.whatIfNotNullOrEmpty { url ->
-            viewBinding.detailsNewsWebView.loadUrl(url)
         }
     }
 }

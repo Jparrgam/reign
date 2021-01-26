@@ -11,5 +11,5 @@ interface NewsRepository {
     fun getNewsByFilter(page: Int): Flow<ApiResult<NewsResponse>>
 
     @WorkerThread
-    fun updateNews(newsUpdate: NewsItem): Flow<Boolean>
+    fun updateNews(newsId: String): Flow<Boolean>
 }

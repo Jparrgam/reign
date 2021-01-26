@@ -1,65 +1,75 @@
 ext.versions = [
-        minSdk              : 23,
-        compileSdk          : 30,
-        versionCode         : 1,
-        versionName         : '0.0.1',
+        minSdk               : 23,
+        compileSdk           : 30,
+        versionCode          : 1,
+        versionName          : '0.0.1',
 
-        gradleBuildTool     : '4.1.2',
-        kotlin              : '1.4.21',
+        gradleBuildTool      : '4.1.2',
+        kotlin               : '1.4.21',
 
         // material
-        materialVersion     : '1.3.0-alpha03',
+        materialVersion      : '1.3.0-alpha03',
 
         // compose image loading
-        landscapistVersion  : '1.1.3',
+        landscapistVersion   : '1.1.3',
 
         // appcompat
-        appcompat           : '1.2.0',
+        appcompat            : '1.2.0',
 
         // androidx jetpack
-        constraintVersion   : '2.0.2',
-        coreKtx             : '1.3.2',
+        constraintVersion    : '2.0.2',
+        coreKtx              : '1.3.2',
 
         // architecture components
-        fragmentVersion     : '1.2.5',
-        lifecycleVersion    : '2.2.0',
-        roomVersion         : '2.2.6',
-        archCompomentVersion: '2.1.0',
+        fragmentVersion      : '1.2.5',
+        lifecycleVersion     : '2.2.0',
+        roomVersion          : '2.2.6',
+        archCompomentVersion : '2.1.0',
 
         // di
-        hiltCoreVersion     : '2.31-alpha',
-        hiltVersion         : '1.0.0-alpha02',
+        hiltCoreVersion      : '2.31-alpha',
+        hiltVersion          : '1.0.0-alpha02',
 
         // network
-        retrofitVersion     : '2.9.0',
-        okhttpVersion       : '4.7.2',
-        retrofitConverter   : '2.4.0',
-        sandwichVersion     : '1.0.8',
+        retrofitVersion      : '2.9.0',
+        okhttpVersion        : '4.7.2',
+        retrofitConverter    : '2.4.0',
+        sandwichVersion      : '1.0.8',
 
         // coroutines
-        coroutinesVersion   : '1.4.0',
+        coroutinesVersion    : '1.4.0',
 
         // whatIf
-        whatIfVersion       : '1.0.9',
+        whatIfVersion        : '1.0.9',
 
         // debugging
-        timberVersion       : '4.7.1',
+        timberVersion        : '4.7.1',
 
         // state ui
-        mvrx                : '2.0.0-beta3',
+        mvrx                 : '2.0.0-beta3',
 
         // navigation
-        navigation          : '2.3.2',
-        epoxy               : '4.3.1',
+        navigation           : '2.3.2',
+        epoxy                : '4.3.1',
 
         // lottie
-        lottie              : '3.6.0',
+        lottie               : '3.6.0',
 
         // ui
-        swipeLayout         : '1.2.0@aar',
-        tagView             : '1.0.1',
-        swiperefreshlayout  : '1.1.0',
+        swipeLayout          : '1.2.0@aar',
+        tagView              : '1.0.1',
+        swiperefreshlayout   : '1.1.0',
+        alerter              : '3.0.0',
+        constraintLayout: '2.0.4',
 
         // mutidex
-        multidex            : '2.0.1'
+        multidex             : '2.0.1',
+
+        // unit test
+        junitVersion         : '4.12',
+        turbineVersion       : '0.3.0',
+        mockitoKotlinVersion : '2.2.0',
+        mockitoCore          : '3.3.3',
+        coreTesting          : '2.1.0',
+        kotlinxCoroutinesTest: '1.3.4'
 ]

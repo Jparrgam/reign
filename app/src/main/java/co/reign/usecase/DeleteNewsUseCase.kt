@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class DeleteNewsUseCase @Inject constructor(
     private val newsRepository: NewsRepository
-): UseCase<NewsItem, Boolean>() {
-    override fun perform(params: NewsItem): Flow<Boolean> =
+): UseCase<String, Boolean>() {
+    override fun perform(params: String): Flow<Boolean> =
         newsRepository.updateNews(params)
 }

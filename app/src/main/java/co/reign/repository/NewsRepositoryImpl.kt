@@ -4,11 +4,9 @@ import co.reign.core.either.ApiResult
 import co.reign.core.interceptor.NoConnectivityException
 import co.reign.database.dao.NewsDao
 import co.reign.datasource.NewsDataSource
-import co.reign.model.NewsItem
 import co.reign.model.NewsResponse
 import com.skydoves.sandwich.*
 import com.skydoves.whatif.whatIfNotNull
-import com.skydoves.whatif.whatIfNotNullOrEmpty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
@@ -39,14 +37,17 @@ class NewsRepositoryImpl @Inject constructor(
                     throw exception
                 }
             }.onSuccess {
-                data?.hits.whatIfNotNullOrEmpty {
-                    newsDao.insertNews(it)
+                data?.hits.whatIfNotNull { hits ->
+                    newsDao.insertNews(hits)
+                    newsDao.deleteNews.forEach {
+                        updateNews(it.newsID)
+                    }
                 }
             }
     }.flowOn(Dispatchers.IO)
 
-    override fun updateNews(newsUpdate: NewsItem): Flow<Boolean> = flow {
-        val result = newsDao.updateNews(newsUpdate)
+    override fun updateNews(newsId: String): Flow<Boolean> = flow {
+        val result = newsDao.updateNews(deleteNews = 1, newsId = newsId)
         emit(result > 1)
     }.flowOn(Dispatchers.IO)
 }

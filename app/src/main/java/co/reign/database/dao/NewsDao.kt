@@ -8,8 +8,8 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNews(news: List<NewsItem>)
 
-    @Update
-    fun updateNews(news: NewsItem): Int
+    @Query("UPDATE news SET isNewsDelete = :deleteNews WHERE newsID = :newsId")
+    fun updateNews(deleteNews: Int, newsId: String): Int
 
     @get:Query("SELECT * FROM news where isNewsDelete = 0")
     val allNews: List<NewsItem>

@@ -9,11 +9,7 @@
         android:name="co.reign.ui.fragment.HackerNewsFragment">
         <action
             android:id="@+id/action_hackerNewsFragment_to_hackerNewsDetailsFragment"
-            app:destination="@id/hackerNewsDetailsFragment"
-            app:enterAnim="@anim/anim_enter"
-            app:exitAnim="@anim/anim_exit"
-            app:popEnterAnim="@anim/anim_pop_enter"
-            app:popExitAnim="@anim/anim_pop_exit" />
+            app:destination="@id/hackerNewsDetailsFragment"/>
     </fragment>
 
     <fragment

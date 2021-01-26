@@ -92,8 +92,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
 
     // material
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
     implementation "com.google.android.material:material:$versions.materialVersion"
 
     // androidx
@@ -120,13 +119,10 @@ dependencies {
     implementation "com.github.skydoves:sandwich:$versions.sandwichVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofitConverter"
-    testImplementation "com.squareup.okhttp3:mockwebserver:$versions.okhttpVersion"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofitVersion"
 
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutinesVersion"
 
     // whatIf
     implementation "com.github.skydoves:whatif:$versions.whatIfVersion"
@@ -144,7 +140,7 @@ dependencies {
     implementation "com.daimajia.swipelayout:library:$versions.swipeLayout"
     implementation "co.lujun:androidtagview:$versions.tagView"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
-
+    implementation "com.tapadoo.android:alerter:$versions.alerter"
 
     // room database
     implementation "androidx.room:room-runtime:$versions.roomVersion"

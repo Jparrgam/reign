@@ -1,14 +1,7 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/loadingNews"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        app:lottie_renderMode="automatic"
-        app:lottie_enableMergePathsForKitKatAndAbove="true"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/loading_news"/>
+    <ProgressBar
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
 </merge>
