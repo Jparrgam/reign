@@ -1,4 +1,4 @@
-#Reign 
+Reign 
 
 > Gradle Version : 6.5
 
