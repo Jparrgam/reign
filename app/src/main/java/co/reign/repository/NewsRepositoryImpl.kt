@@ -4,6 +4,7 @@ import co.reign.core.either.ApiResult
 import co.reign.core.interceptor.NoConnectivityException
 import co.reign.database.dao.NewsDao
 import co.reign.datasource.NewsDataSource
+import co.reign.model.NewsItem
 import co.reign.model.NewsResponse
 import com.skydoves.sandwich.*
 import com.skydoves.whatif.whatIfNotNull
@@ -20,6 +21,13 @@ class NewsRepositoryImpl @Inject constructor(
         dataSource.getNewsByFilter(page = page)
             .suspendOnSuccess {
                 data.whatIfNotNull { response ->
+                    val newsDataToEmit: MutableList<NewsItem> = mutableListOf()
+                    response.hits?.forEach { hit ->
+                        if(!isDeleteNews(hit)) {
+                            newsDataToEmit.add(hit)
+                        }
+                    }
+                    response.hits = newsDataToEmit
                     emit(ApiResult.Success(response))
                 }
             }.suspendOnException {
@@ -50,4 +58,13 @@ class NewsRepositoryImpl @Inject constructor(
         val result = newsDao.updateNews(deleteNews = 1, newsId = newsId)
         emit(result > 1)
     }.flowOn(Dispatchers.IO)
+
+    private fun isDeleteNews(hit: NewsItem): Boolean {
+        newsDao.deleteNews.forEach {
+            if (it.newsID == hit.newsID)
+                return true
+        }
+
+        return false
+    }
 }
