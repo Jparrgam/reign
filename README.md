@@ -1,8 +1,6 @@
 #Reign 
 
-> Gradle Version
-
-    6.5
+> Gradle Version : 6.5
 
 > project dependencies
 
